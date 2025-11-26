@@ -72,4 +72,21 @@ const authUser = async (req, res) => {
 };
 
 
-export { registerUser, authUser };
+// @desc    Get user profile data
+// @route   GET /api/users/profile
+// @access  Private (Requires JWT)
+const getUserProfile = async (req, res) => {
+  // req.user is available because of the 'protect' middleware!
+  if (req.user) {
+    res.json({
+      _id: req.user._id,
+      name: req.user.name,
+      email: req.user.email,
+    });
+  } else {
+    res.status(404).json({ message: 'User not found' });
+  }
+};
+
+export { registerUser, authUser, getUserProfile };
+
