@@ -23,7 +23,7 @@ app.get("/", (req,res) => {
 });
 
 // New route mounting
-app.use('api/users', userRoutes);
+app.use('/api/users', userRoutes);
 app.use('/api/boards', boardRoutes);
 
 app.listen(PORT, () => {
