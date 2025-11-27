@@ -3,7 +3,7 @@ import bycrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 
 //Helper function to generate JWT
-const generatToken = (id) => {
+const generateToken = (id) => {
     return jwt.sign({id}, process.env.JWT_SECRET), {expiresIn: '30d'}
 }
 
@@ -35,7 +35,7 @@ const registerUser = async (req, res) => {
                 _id: user._id,
                 name: user.name,
                 email: user.email,
-                token: generatToken(user._id),
+                token: generateToken(user._id),
             })
         } else {
             res.status(400).json({ message: "Invalid user data" });

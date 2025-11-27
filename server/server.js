@@ -3,6 +3,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import connectDB from "./config/db.js";
 import userRoutes from "./routes/userRoutes.js";
+import boardRoutes from "./routes/boardRoutes.js";
 
 
 //Load environment variables
@@ -23,7 +24,7 @@ app.get("/", (req,res) => {
 
 // New route mounting
 app.use('api/users', userRoutes);
-
+app.use('/api/boards', boardRoutes);
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
